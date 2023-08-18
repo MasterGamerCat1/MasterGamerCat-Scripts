@@ -17,6 +17,7 @@ getgenv().SelectEgg = ""
 -- Local Functions
 
 -- Functions
+-- Buttons
 
 -- Farming
 
@@ -54,6 +55,69 @@ local MiscTab = Window:MakeTab({
     PremiumOnly = false
 })
 
+MiscTab:AddButton({
+    Name = "Forest",
+    Default = false,
+    Callback = function(Value)
+        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 1,}))
+    end   
+})
+
+MiscTab:AddButton({
+    Name = "Desert",
+    Default = false,
+    Callback = function(Value)
+        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 2,}))
+    end   
+})
+
+MiscTab:AddButton({
+    Name = "Cave",
+    Default = false,
+    Callback = function(Value)
+        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 3,}))
+    end   
+})
+
+MiscTab:AddButton({
+    Name = "Ocean",
+    Default = false,
+    Callback = function(Value)
+        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 4,}))
+    end   
+})
+
+MiscTab:AddButton({
+    Name = "Candy",
+    Default = false,
+    Callback = function(Value)
+        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 5,}))
+    end   
+})
+
+MiscTab:AddButton({
+    Name = "Snow",
+    Default = false,
+    Callback = function(Value)
+        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 6,}))
+    end   
+})
+
+MiscTab:AddButton({
+    Name = "Farm",
+    Default = false,
+    Callback = function(Value)
+        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 7,}))
+    end   
+})
+
+MiscTab:AddButton({
+    Name = "Last Area",
+    Default = false,
+    Callback = function(Value)
+        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 8,}))
+    end   
+})
 -- Sliders
 MiscTab:AddSlider({
     Name = "Walkspeed",
