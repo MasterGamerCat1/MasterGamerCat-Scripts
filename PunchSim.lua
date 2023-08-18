@@ -104,7 +104,7 @@ MiscTab:AddButton({
 })
 
 MiscTab:AddButton({
-    Name = "Farm",
+    Name = "Toy",
     Default = false,
     Callback = function(Value)
         game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 7,}))
@@ -112,12 +112,21 @@ MiscTab:AddButton({
 })
 
 MiscTab:AddButton({
-    Name = "Last Area",
+    Name = "Farm",
     Default = false,
     Callback = function(Value)
         game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 8,}))
     end   
 })
+
+MiscTab:AddButton({
+    Name = "Last Area",
+    Default = false,
+    Callback = function(Value)
+        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 9,}))
+    end   
+})
+
 -- Sliders
 MiscTab:AddSlider({
     Name = "Walkspeed",
