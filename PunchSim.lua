@@ -55,7 +55,13 @@ local MiscTab = Window:MakeTab({
     PremiumOnly = false
 })
 
-MiscTab:AddButton({
+local TeleportTab = Window:MakeTab({
+    Name = "Teleport",
+    Icon = "rbxassetid://6723742952",
+    PremiumOnly = false
+})
+
+TeleportTab:AddButton({
     Name = "Forest",
     Default = false,
     Callback = function(Value)
@@ -63,7 +69,7 @@ MiscTab:AddButton({
     end   
 })
 
-MiscTab:AddButton({
+TeleportTab:AddButton({
     Name = "Desert",
     Default = false,
     Callback = function(Value)
@@ -71,7 +77,7 @@ MiscTab:AddButton({
     end   
 })
 
-MiscTab:AddButton({
+TeleportTab:AddButton({
     Name = "Cave",
     Default = false,
     Callback = function(Value)
@@ -79,7 +85,7 @@ MiscTab:AddButton({
     end   
 })
 
-MiscTab:AddButton({
+TeleportTab:AddButton({
     Name = "Ocean",
     Default = false,
     Callback = function(Value)
@@ -87,7 +93,7 @@ MiscTab:AddButton({
     end   
 })
 
-MiscTab:AddButton({
+TeleportTab:AddButton({
     Name = "Candy",
     Default = false,
     Callback = function(Value)
@@ -95,7 +101,7 @@ MiscTab:AddButton({
     end   
 })
 
-MiscTab:AddButton({
+TeleportTab:AddButton({
     Name = "Snow",
     Default = false,
     Callback = function(Value)
@@ -103,7 +109,7 @@ MiscTab:AddButton({
     end   
 })
 
-MiscTab:AddButton({
+TeleportTab:AddButton({
     Name = "Toy",
     Default = false,
     Callback = function(Value)
@@ -111,7 +117,7 @@ MiscTab:AddButton({
     end   
 })
 
-MiscTab:AddButton({
+TeleportTab:AddButton({
     Name = "Farm",
     Default = false,
     Callback = function(Value)
@@ -119,7 +125,7 @@ MiscTab:AddButton({
     end   
 })
 
-MiscTab:AddButton({
+TeleportTab:AddButton({
     Name = "Last Area",
     Default = false,
     Callback = function(Value)
@@ -161,6 +167,38 @@ FarmingTab:AddToggle({
     Callback = function(Value)
         getgenv().AutoDamage = Value
         AutoDamage()
+    end
+})
+
+FarmingTab:AddToggle({
+    Name = "AutoClick",
+    Default = false,
+    Callback = function(Value)
+        getgenv().AutoClicker = Value
+        local VIM = game:GetService("VirtualInputManager")
+        local GuiService = game:GetService("GuiService")
+        local RunService = game:GetService("RunService")
+        
+        local function getScreenCenter()
+            local screenSize = GuiService:GetScreenResolution()
+            return Vector2.new(screenSize.X / 2, screenSize.Y / 2)
+        end
+        
+        local function simulateMouseClick()
+            local screenCenter = getScreenCenter()
+            VIM:SendMouseButtonEvent(screenCenter.X, screenCenter.Y, 0, true, game, 1)
+            VIM:SendMouseButtonEvent(screenCenter.X, screenCenter.Y, 0, false, game, 1)
+        end
+        
+        local connection
+        connection = RunService.Heartbeat:Connect(function()
+            if getgenv().AutoClicker then
+                simulateMouseClick()
+            else
+                connection:Disconnect()  -- Disconnect the Heartbeat connection to stop the loop
+            end
+        end)
+  
     end
 })
 
