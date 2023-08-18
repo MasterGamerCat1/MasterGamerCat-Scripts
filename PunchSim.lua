@@ -54,6 +54,30 @@ local MiscTab = Window:MakeTab({
     PremiumOnly = false
 })
 
+-- Sliders
+MiscTab:AddSlider({
+    Name = "Walkspeed",
+    Min = 16,
+    Max = 500,
+    Default = 16,
+    Increment = 1,
+    ValueName = "WalkSpeed",
+    Callback = function(Value)
+     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+    end    
+})
+
+MiscTab:AddSlider({
+    Name = "JumpPower",
+    Min = 16,
+    Max = 500,
+    Default = 16,
+    Increment = 1,
+    ValueName = "JumpPower",
+    Callback = function(Value)
+  game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+    end    
+})
 -- Toggles
 
 
