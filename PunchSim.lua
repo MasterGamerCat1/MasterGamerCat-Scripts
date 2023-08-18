@@ -55,6 +55,39 @@ local MiscTab = Window:MakeTab({
     PremiumOnly = false
 })
 
+MiscTab:AddButton({
+    Name = "HackMachine (100Gems)",
+    Default = false,
+    Callback = function(Value)
+        game:GetService("ReplicatedStorage").Events.HackEvent:InvokeServer("Begin")
+    end
+})
+
+MiscTab:AddButton({
+    Name = "Wishing Well Small",
+    Default = false,
+    Callback = function(Value)
+        game:GetService("ReplicatedStorage").Events.WishingWell:FireServer("Small")
+    end
+    })
+
+MiscTab:AddButton({
+    Name = "Wishing Well Medium)",
+    Default = false,
+    Callback = function(Value)
+        game:GetService("ReplicatedStorage").Events.WishingWell:FireServer("Medium")
+    end
+    })
+
+MiscTab:AddButton({
+    Name = "Wishing Well High)",
+    Default = false,
+    Callback = function(Value)
+        game:GetService("ReplicatedStorage").Events.WishingWell:FireServer("High")
+    end
+})
+
+
 local TeleportTab = Window:MakeTab({
     Name = "Teleport",
     Icon = "rbxassetid://6723742952",
