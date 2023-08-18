@@ -166,6 +166,21 @@ TeleportTab:AddButton({
     end   
 })
 
+local DungeonTab = Window:MakeTab({
+    Name = "Dungeon",
+    Icon = "rbxassetid://4786777810",
+    PremiumOnly = false
+})
+
+DungeonTab:AddButton({
+    Name = "Kill Aura Soon",
+    Default = false,
+    Callback = function(Value)
+
+
+    end
+})
+
 -- Sliders
 MiscTab:AddSlider({
     Name = "Walkspeed",
