@@ -56,7 +56,7 @@ local MiscTab = Window:MakeTab({
 })
 
 MiscTab:AddToggle({
-    Name = "FreeGifts (Working On it)",
+    Name = "🎁  FreeGifts (Working On it)",
     Default = false,
     Callback = function(Value)
         getgenv().AutoClaim = Value
@@ -65,7 +65,7 @@ MiscTab:AddToggle({
 })
 
 MiscTab:AddButton({
-    Name = "HackMachine (100Gems)",
+    Name = "👨‍💻  HackMachine (100Gems)",
     Default = false,
     Callback = function(Value)
         game:GetService("ReplicatedStorage").Events.HackEvent:InvokeServer("Begin")
@@ -73,7 +73,7 @@ MiscTab:AddButton({
 })
 
 MiscTab:AddButton({
-    Name = "Wishing Well Small (50Gems)",
+    Name = "⭐  Wishing Well Small (50Gems)",
     Default = false,
     Callback = function(Value)
         game:GetService("ReplicatedStorage").Events.WishingWell:FireServer("Small")
@@ -81,7 +81,7 @@ MiscTab:AddButton({
     })
 
 MiscTab:AddButton({
-    Name = "Wishing Well Medium (200Gems)",
+    Name = "⭐  Wishing Well Medium (200Gems)",
     Default = false,
     Callback = function(Value)
         game:GetService("ReplicatedStorage").Events.WishingWell:FireServer("Medium")
@@ -89,7 +89,7 @@ MiscTab:AddButton({
     })
 
 MiscTab:AddButton({
-    Name = "Wishing Well High (1000Gems)",
+    Name = "⭐  Wishing Well High (1000Gems)",
     Default = false,
     Callback = function(Value)
         game:GetService("ReplicatedStorage").Events.WishingWell:FireServer("High")
@@ -228,7 +228,7 @@ MiscTab:AddSlider({
 
 -- Farming
 FarmingTab:AddToggle({
-    Name = "Auto Damage",
+    Name = "🥊 Auto Damage",
     Default = false,
     Callback = function(Value)
         getgenv().AutoDamage = Value
