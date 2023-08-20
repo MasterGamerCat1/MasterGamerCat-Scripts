@@ -104,7 +104,7 @@ local TeleportTab = Window:MakeTab({
 })
 
 TeleportTab:AddButton({
-    Name = "Forest (Need To buy TP With Gems)",
+    Name = "🌲  Forest (Must Buy it)",
     Default = false,
     Callback = function(Value)
         game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 1,}))
@@ -112,7 +112,7 @@ TeleportTab:AddButton({
 })
 
 TeleportTab:AddButton({
-    Name = "Desert (Need To buy TP With Gems",
+    Name = "🏜️  Desert  (Must Buy it)",
     Default = false,
     Callback = function(Value)
         game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 2,}))
@@ -120,7 +120,7 @@ TeleportTab:AddButton({
 })
 
 TeleportTab:AddButton({
-    Name = "Cave (Need To buy TP With Gems",
+    Name = "🕳️  Cave  (Must Buy it)",
     Default = false,
     Callback = function(Value)
         game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 3,}))
@@ -128,7 +128,7 @@ TeleportTab:AddButton({
 })
 
 TeleportTab:AddButton({
-    Name = "Ocean (Need To buy TP With Gems",
+    Name = "🌊  Ocean  (Must Buy it)",
     Default = false,
     Callback = function(Value)
         game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 4,}))
@@ -136,7 +136,7 @@ TeleportTab:AddButton({
 })
 
 TeleportTab:AddButton({
-    Name = "Candy (Need To buy TP With Gems",
+    Name = "🍬  Candy  (Must Buy it)",
     Default = false,
     Callback = function(Value)
         game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 5,}))
@@ -144,7 +144,7 @@ TeleportTab:AddButton({
 })
 
 TeleportTab:AddButton({
-    Name = "Snow (Need To buy TP With Gems",
+    Name = "❄️  Snow  (Must Buy it)",
     Default = false,
     Callback = function(Value)
         game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 6,}))
@@ -152,7 +152,7 @@ TeleportTab:AddButton({
 })
 
 TeleportTab:AddButton({
-    Name = "Toy (Need To buy TP With Gems",
+    Name = "🧸  Toy  (Must Buy it)",
     Default = false,
     Callback = function(Value)
         game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 7,}))
@@ -160,7 +160,7 @@ TeleportTab:AddButton({
 })
 
 TeleportTab:AddButton({
-    Name = "Farm (Need To buy TP With Gems",
+    Name = "🚜  Farm  (Must Buy it)",
     Default = false,
     Callback = function(Value)
         game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 8,}))
@@ -168,7 +168,7 @@ TeleportTab:AddButton({
 })
 
 TeleportTab:AddButton({
-    Name = "Last Area (Need To buy TP With Gems)",
+    Name = "🏯  Samurai  (Must Buy it)",
     Default = false,
     Callback = function(Value)
         game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 9,}))
@@ -176,7 +176,7 @@ TeleportTab:AddButton({
 })
 
 TeleportTab:AddButton({
-    Name = "Last Last Area (Need To buy TP With Gems)",
+    Name = "Last Area  (Must Buy it)",
     Default = false,
     Callback = function(Value)
         game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 10,}))
