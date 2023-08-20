@@ -64,7 +64,7 @@ MiscTab:AddButton({
 })
 
 MiscTab:AddButton({
-    Name = "Wishing Well Small",
+    Name = "Wishing Well Small (50Gems)",
     Default = false,
     Callback = function(Value)
         game:GetService("ReplicatedStorage").Events.WishingWell:FireServer("Small")
@@ -72,7 +72,7 @@ MiscTab:AddButton({
     })
 
 MiscTab:AddButton({
-    Name = "Wishing Well Medium)",
+    Name = "Wishing Well Medium (200Gems)",
     Default = false,
     Callback = function(Value)
         game:GetService("ReplicatedStorage").Events.WishingWell:FireServer("Medium")
@@ -80,7 +80,7 @@ MiscTab:AddButton({
     })
 
 MiscTab:AddButton({
-    Name = "Wishing Well High)",
+    Name = "Wishing Well High (1000Gems)",
     Default = false,
     Callback = function(Value)
         game:GetService("ReplicatedStorage").Events.WishingWell:FireServer("High")
@@ -95,7 +95,7 @@ local TeleportTab = Window:MakeTab({
 })
 
 TeleportTab:AddButton({
-    Name = "Forest",
+    Name = "Forest (Need To buy TP With Gems)",
     Default = false,
     Callback = function(Value)
         game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 1,}))
@@ -103,7 +103,7 @@ TeleportTab:AddButton({
 })
 
 TeleportTab:AddButton({
-    Name = "Desert",
+    Name = "Desert (Need To buy TP With Gems",
     Default = false,
     Callback = function(Value)
         game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 2,}))
@@ -111,7 +111,7 @@ TeleportTab:AddButton({
 })
 
 TeleportTab:AddButton({
-    Name = "Cave",
+    Name = "Cave (Need To buy TP With Gems",
     Default = false,
     Callback = function(Value)
         game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 3,}))
@@ -119,7 +119,7 @@ TeleportTab:AddButton({
 })
 
 TeleportTab:AddButton({
-    Name = "Ocean",
+    Name = "Ocean (Need To buy TP With Gems",
     Default = false,
     Callback = function(Value)
         game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 4,}))
@@ -127,7 +127,7 @@ TeleportTab:AddButton({
 })
 
 TeleportTab:AddButton({
-    Name = "Candy",
+    Name = "Candy (Need To buy TP With Gems",
     Default = false,
     Callback = function(Value)
         game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 5,}))
@@ -135,7 +135,7 @@ TeleportTab:AddButton({
 })
 
 TeleportTab:AddButton({
-    Name = "Snow",
+    Name = "Snow (Need To buy TP With Gems",
     Default = false,
     Callback = function(Value)
         game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 6,}))
@@ -143,7 +143,7 @@ TeleportTab:AddButton({
 })
 
 TeleportTab:AddButton({
-    Name = "Toy",
+    Name = "Toy (Need To buy TP With Gems",
     Default = false,
     Callback = function(Value)
         game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 7,}))
@@ -151,7 +151,7 @@ TeleportTab:AddButton({
 })
 
 TeleportTab:AddButton({
-    Name = "Farm",
+    Name = "Farm (Need To buy TP With Gems",
     Default = false,
     Callback = function(Value)
         game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 8,}))
@@ -159,10 +159,18 @@ TeleportTab:AddButton({
 })
 
 TeleportTab:AddButton({
-    Name = "Last Area",
+    Name = "Last Area (Need To buy TP With Gems)",
     Default = false,
     Callback = function(Value)
         game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 9,}))
+    end   
+})
+
+TeleportTab:AddButton({
+    Name = "Last Last Area (Need To buy TP With Gems)",
+    Default = false,
+    Callback = function(Value)
+        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 10,}))
     end   
 })
 
