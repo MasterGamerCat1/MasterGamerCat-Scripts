@@ -55,6 +55,15 @@ local MiscTab = Window:MakeTab({
     PremiumOnly = false
 })
 
+MiscTab:AddToggle({
+    Name = "FreeGifts (Working On it)",
+    Default = false,
+    Callback = function(Value)
+        getgenv().AutoClaim = Value
+        game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(1)
+    end
+})
+
 MiscTab:AddButton({
     Name = "HackMachine (100Gems)",
     Default = false,
@@ -214,6 +223,7 @@ MiscTab:AddSlider({
     end    
 })
 -- Toggles
+
 
 
 -- Farming
