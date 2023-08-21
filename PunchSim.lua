@@ -14,6 +14,8 @@ getgenv().AutoDamage = false
 getgenv().AutoHatchEgg = false
 getgenv().SelectEgg = ""
 
+getgenv().Teleport = false
+getgenv().SelectTeleport = ""
 -- Local Functions
 
 -- Functions
@@ -116,83 +118,46 @@ local TeleportTab = Window:MakeTab({
 })
 
 TeleportTab:AddButton({
-    Name = "🌲  Forest (Must Buy it)",
+    Name = "Teleport To Area",
     Default = false,
-    Callback = function(Value)
-        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 1,}))
-    end   
+    Callback = function()
+        local offset = Vector3.new(0, 7, 0)
+        local selectedTeleport = game:GetService("ReplicatedStorage").TeleportLocations:FindFirstChild(getgenv().SelectTeleport)
+        if selectedTeleport then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = selectedTeleport.CFrame + offset
+        end
+    end
 })
 
-TeleportTab:AddButton({
-    Name = "🏜️  Desert  (Must Buy it)",
-    Default = false,
-    Callback = function(Value)
-        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 2,}))
-    end   
-})
+local teleport          = game:GetService("ReplicatedStorage").TeleportLocations:GetChildren() -- get all eggs in the workspace
+local teleportOptionsSet = {}                                           -- start with the default option
 
-TeleportTab:AddButton({
-    Name = "🕳️  Cave  (Must Buy it)",
-    Default = false,
-    Callback = function(Value)
-        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 3,}))
-    end   
-})
+-- loop through each egg and add its name to the options list
+for i = 1, #teleport do
+    local teleportName = teleport[i].Name
+    local numericPart = teleportName:match("%d+")            -- extract the numeric part from the egg name
+    if numericPart then
+        teleportOptionsSet[tonumber(numericPart)] = true     -- insert the numeric part as a key in the set
+    end
+end
 
-TeleportTab:AddButton({
-    Name = "🌊  Ocean  (Must Buy it)",
-    Default = false,
-    Callback = function(Value)
-        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 4,}))
-    end   
-})
+-- Convert the set keys to a list
+local teleportOptions = {}
+for numericValue, _ in pairs(teleportOptionsSet) do
+    table.insert(teleportOptions, numericValue)
+end
 
-TeleportTab:AddButton({
-    Name = "🍬  Candy  (Must Buy it)",
-    Default = false,
-    Callback = function(Value)
-        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 5,}))
-    end   
-})
+-- Sort the eggOptions list in ascending order
+table.sort(teleportOptions)
 
-TeleportTab:AddButton({
-    Name = "❄️  Snow  (Must Buy it)",
-    Default = false,
-    Callback = function(Value)
-        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 6,}))
-    end   
-})
 
-TeleportTab:AddButton({
-    Name = "🧸  Toy  (Must Buy it)",
-    Default = false,
+TeleportTab:AddDropdown({
+    Name = "Select Area",
+    Default = "",
+    Options = teleportOptions,
     Callback = function(Value)
-        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 7,}))
-    end   
-})
-
-TeleportTab:AddButton({
-    Name = "🚜  Farm  (Must Buy it)",
-    Default = false,
-    Callback = function(Value)
-        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 8,}))
-    end   
-})
-
-TeleportTab:AddButton({
-    Name = "🏯  Samurai  (Must Buy it)",
-    Default = false,
-    Callback = function(Value)
-        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 9,}))
-    end   
-})
-
-TeleportTab:AddButton({
-    Name = "🚀  Space  (Must Buy it)",
-    Default = false,
-    Callback = function(Value)
-        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 10,}))
-    end   
+        getgenv().SelectTeleport = Value
+    end
 })
 
 local DungeonTab = Window:MakeTab({
