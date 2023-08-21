@@ -56,11 +56,23 @@ local MiscTab = Window:MakeTab({
 })
 
 MiscTab:AddToggle({
-    Name = "🎁  FreeGifts (Working On it)",
+    Name = "🎁  FreeGifts",
     Default = false,
     Callback = function(Value)
         getgenv().AutoClaim = Value
         game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(1)
+        game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(2)
+        game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(3)
+        game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(4)
+        game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(5)
+        game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(6)
+        game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(7)
+        game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(8)
+        game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(9)
+        game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(10)
+        game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(11)
+        game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(12)
+        task.wait()
     end
 })
 
