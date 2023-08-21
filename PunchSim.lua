@@ -160,6 +160,87 @@ TeleportTab:AddDropdown({
     end
 })
 
+
+TeleportTab:AddButton({
+    Name = "🌲  Forest (Must Buy it)",
+    Default = false,
+    Callback = function(Value)
+        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 1,}))
+    end   
+})
+
+TeleportTab:AddButton({
+    Name = "🏜️  Desert  (Must Buy it)",
+    Default = false,
+    Callback = function(Value)
+        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 2,}))
+    end   
+})
+
+TeleportTab:AddButton({
+    Name = "🕳️  Cave  (Must Buy it)",
+    Default = false,
+    Callback = function(Value)
+        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 3,}))
+    end   
+})
+
+TeleportTab:AddButton({
+    Name = "🌊  Ocean  (Must Buy it)",
+    Default = false,
+    Callback = function(Value)
+        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 4,}))
+    end   
+})
+
+TeleportTab:AddButton({
+    Name = "🍬  Candy  (Must Buy it)",
+    Default = false,
+    Callback = function(Value)
+        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 5,}))
+    end   
+})
+
+TeleportTab:AddButton({
+    Name = "❄️  Snow  (Must Buy it)",
+    Default = false,
+    Callback = function(Value)
+        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 6,}))
+    end   
+})
+
+TeleportTab:AddButton({
+    Name = "🧸  Toy  (Must Buy it)",
+    Default = false,
+    Callback = function(Value)
+        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 7,}))
+    end   
+})
+
+TeleportTab:AddButton({
+    Name = "🚜  Farm  (Must Buy it)",
+    Default = false,
+    Callback = function(Value)
+        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 8,}))
+    end   
+})
+
+TeleportTab:AddButton({
+    Name = "🏯  Samurai  (Must Buy it)",
+    Default = false,
+    Callback = function(Value)
+        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 9,}))
+    end   
+})
+
+TeleportTab:AddButton({
+    Name = "🚀  Space  (Must Buy it)",
+    Default = false,
+    Callback = function(Value)
+        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 10,}))
+    end   
+})
+
 local DungeonTab = Window:MakeTab({
     Name = "Dungeon",
     Icon = "rbxassetid://4786777810",
