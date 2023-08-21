@@ -1,10 +1,10 @@
 local OrionLib = loadstring(game:HttpGet(('https://pastebin.com/raw/TmwenJBZ')))()
 local Window = OrionLib:MakeWindow({
-    Name = "Cesar Hub",
+    Name = "Chester Hub",
     HidePremium = false,
-    IntroText = "Cesar Hub",
+    IntroText = "Chester Hub",
     SaveConfig = true,
-    ConfigFolder = "Cesar Hub"
+    ConfigFolder = "Chester Hub"
 })
 
 -- Values
@@ -353,9 +353,9 @@ EggsTab:AddDropdown({
 
 -- Notifications
 OrionLib:MakeNotification({
-    Name = "Cesar Hub",
+    Name = "Chester Hub",
     Content = "Successfully loaded in!",
-    Image = "rbxassetid://2669899834",
+    Image = "rbxassetid://14515446164",
     Time = 5
 })
 OrionLib:Init()
