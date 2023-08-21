@@ -59,7 +59,7 @@ MiscTab:AddToggle({
     Name = "🎁  FreeGifts",
     Default = false,
     Callback = function(Value)
-        getgenv().AutoClaim = Value
+        getgenv().AutoPlaytime = Value
         game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(1)
         game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(2)
         game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(3)
@@ -188,7 +188,7 @@ TeleportTab:AddButton({
 })
 
 TeleportTab:AddButton({
-    Name = "Last Area  (Must Buy it)",
+    Name = "🚀  Space  (Must Buy it)",
     Default = false,
     Callback = function(Value)
         game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 10,}))
@@ -209,6 +209,13 @@ DungeonTab:AddButton({
 
     end
 })
+
+local GUITab = Window:MakeTab({
+    Name = "GUI",
+    Icon = "rbxassetid://5078617183",
+    PremiumOnly = false
+})
+
 
 -- Sliders
 MiscTab:AddSlider({
