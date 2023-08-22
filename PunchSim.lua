@@ -45,6 +45,8 @@ local FarmingTab = Window:MakeTab({
     PremiumOnly = false
 })
 
+
+
 local EggsTab = Window:MakeTab({
     Name = "Eggs",
     Icon = "rbxassetid://8691625924",
@@ -55,6 +57,42 @@ local MiscTab = Window:MakeTab({
     Name = "Misc",
     Icon = "rbxassetid://476288227",
     PremiumOnly = false
+})
+
+MiscTab:AddButton({
+    Name = "Anti AFK",
+    Default = false,
+    Callback = function(Value)
+        local VirtualUser = game:GetService("VirtualUser")
+        local PlayerConnections = getconnections or get_signal_cons
+        
+            if PlayerConnections then
+                
+                for _, Connection in pairs(PlayerConnections(game.Players.LocalPlayer.Idled)) do
+                    
+                    if Connection["Disable"] then
+                        
+                        Connection["Disable"](Connection)
+                    
+                    elseif Connection["Disconnect"] then
+        
+                        Connection["Disconnect"](Connection)
+        
+                    end
+        
+                end
+            
+            else
+        
+                game.Players.LocalPlayer.Idled:Connect(function()
+                    
+                    VirtualUser:CaptureController()
+                    VirtualUser:ClickButton2(Vector2.new())
+        
+                end)
+        
+            end
+    end
 })
 
 MiscTab:AddToggle({
