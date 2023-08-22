@@ -304,12 +304,83 @@ DungeonTab:AddButton({
     end
 })
 
-local GUITab = Window:MakeTab({
-    Name = "GUI",
+local MachinesTab = Window:MakeTab({
+    Name = "Machines",
     Icon = "rbxassetid://5078617183",
     PremiumOnly = false
 })
 
+MachinesTab:AddButton({
+    Name = "🧈 Gold Machine",
+    Default = false,
+    Callback = function(Value)
+        local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
+        rootPart.CFrame = CFrame.new(-1389.04065, 94.3862305, 2417.73462, -0.906296611, 0, 0.422642082, 0, 1, 0, -0.422642082, 0, -0.906296611)
+    end
+})
+
+MachinesTab:AddButton({
+    Name = "💎 Gem Upgrade Machine",
+    Default = false,
+    Callback = function(Value)
+        local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
+        rootPart.CFrame = CFrame.new(-1324.5791, 97.6729889, 2378.8584, -0.874622703, 0, 0.484804183, 0, 1, 0, -0.484804183, 0, -0.874622703)
+    end
+})
+
+MachinesTab:AddButton({
+    Name = "🐾 Merge Machine",
+    Default = false,
+    Callback = function(Value)
+        local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
+        rootPart.CFrame = CFrame.new(-3040.43677, 94.3603821, 2517.44922, -0.994581103, 0, -0.103963219, 0, 1, 0, 0.103963219, 0, -0.994581103)
+    end
+})
+
+MachinesTab:AddButton({
+    Name = "🌈 Rainbow Machine",
+    Default = false,
+    Callback = function(Value)
+        local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
+        rootPart.CFrame = CFrame.new(-2932.83838, 94.4048767, 2511.0791, 0.90629667, 0, 0.422642082, 0, 1, 0, -0.422642082, 0, 0.90629667)
+    end
+})
+
+MachinesTab:AddButton({
+    Name = "★ Wishing Well",
+    Default = false,
+    Callback = function(Value)
+        local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
+        rootPart.CFrame = CFrame.new(-4893.89111, 94.1791382, 2517.57104, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+    end
+})
+
+MachinesTab:AddButton({
+    Name = "🧰 Equipment Shop",
+    Default = false,
+    Callback = function(Value)
+        local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
+        rootPart.CFrame = CFrame.new(-6149.37598, 94.2394028, 2517.45264, 0.422592998, 0, 0.906319618, 0, 1, 0, -0.906319618, 0, 0.422592998)
+    end
+})
+
+MachinesTab:AddButton({
+    Name = "👾 Hacker Station",
+    Default = false,
+    Callback = function(Value)
+        local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
+        rootPart.CFrame = CFrame.new(-7548.10938, 94.1301727, 2528.77954, -0.798616767, 0, 0.601840496, 0, 1, 0, -0.601840496, 0, -0.798616767)
+    end
+})
+
+MachinesTab:AddButton({
+    Name = "⛏️ Miner",
+    Default = false,
+    Callback = function(Value)
+        local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
+        rootPart.CFrame = CFrame.new(-9413.26465, 94.4916687, 2517.36768, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+    end
+})
 
 -- Sliders
 MiscTab:AddSlider({
