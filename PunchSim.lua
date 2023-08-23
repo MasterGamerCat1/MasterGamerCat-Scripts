@@ -433,13 +433,29 @@ FpsTab:AddTextbox({
 
 local CreditsTab = Window:MakeTab({
     Name = "Credits",
-    Icon = "rbxassetid://11896700808",
+    Icon = "rbxassetid://12663078719",
     PremiumOnly = false
 })
 
 CreditsTab:AddLabel("Created By MasterGamerCat and RubyHubOfficial.")
 
-CreditsTab:AddLabel("Join The Discord : ")
+CreditsTab:AddLabel("Join The Discord")
+
+CreditsTab:AddButton({
+    Name = "MasterGamerCat Discord Server",
+    Default = false,
+    Callback = function(Value)
+
+    end
+})
+
+CreditsTab:AddButton({
+    Name = "RubyHubOfficial Discord Server",
+    Default = false,
+    Callback = function(Value)
+
+    end
+})
 
 -- Sliders
 MiscTab:AddSlider({
