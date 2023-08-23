@@ -108,6 +108,7 @@ MiscTab:AddToggle({
     Default = false,
     Callback = function(Value)
         getgenv().AutoPlaytime = Value
+
         game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(1)
         game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(2)
         game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(3)
@@ -120,7 +121,6 @@ MiscTab:AddToggle({
         game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(10)
         game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(11)
         game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(12)
-        task.wait()
     end
 })
 
