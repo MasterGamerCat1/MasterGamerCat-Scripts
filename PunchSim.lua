@@ -401,7 +401,7 @@ FpsTab:AddButton({
 
 FpsTab:AddTextbox({
 	Name = "FPS Unlocker",
-	Default = "default box input",
+	Default = "Input",
 	TextDisappear = true,
 	Callback = function(Value)
         setfpscap(Value)
