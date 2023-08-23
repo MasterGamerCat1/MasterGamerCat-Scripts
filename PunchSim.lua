@@ -60,6 +60,14 @@ local MiscTab = Window:MakeTab({
 })
 
 MiscTab:AddButton({
+    Name = "FPS Boost (Low Graphics)",
+    Default = false,
+    Callback = function(Value)
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/MasterGamerCat1/MasterGamerCat-Scripts/main/LowGraphics.lua"))()
+    end
+})
+
+MiscTab:AddButton({
     Name = "Anti AFK",
     Default = false,
     Callback = function(Value)
