@@ -9,8 +9,8 @@ RubyHubFunctions = loadstring(game:HttpGet("https://raw.githubusercontent.com/Ru
 task.wait(2)
  
 RubyHubFunctions.StartupAnimation({
-    Title = "Munch Eating Simulator", -- default = "Ruby Hub Functions"
-    LoadingText = "Thank you for choosing Munch Eating Simulator!", -- default = "Loading..."
+    Title = "Sex Simulator", -- default = "Ruby Hub Functions"
+    LoadingText = "Thank you for using SEX!", -- default = "Loading..."
     Icon = "rbxassetid://14515446164" -- default = RubyHubFunctions.Icons.RubyHubNoBG
 })
 
