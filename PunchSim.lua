@@ -45,7 +45,7 @@ local FarmingTab = Window:MakeTab({
     PremiumOnly = false
 })
 
-
+FarmingTab:AddLabel("🥊AutoFarming🥊")
 
 local EggsTab = Window:MakeTab({
     Name = "Eggs",
@@ -53,11 +53,17 @@ local EggsTab = Window:MakeTab({
     PremiumOnly = false
 })
 
+EggsTab:AddLabel("🥚Eggs🥚")
+
+
 local MiscTab = Window:MakeTab({
     Name = "Misc",
     Icon = "rbxassetid://476288227",
     PremiumOnly = false
 })
+
+MiscTab:AddLabel("💠Miscs💠")
+
 
 MiscTab:AddButton({
     Name = "Anti AFK",
@@ -116,6 +122,9 @@ MiscTab:AddToggle({
     end
 })
 
+MiscTab:AddLabel("⚙️Activate Machines (Not auto)⚙️")
+
+
 MiscTab:AddButton({
     Name = "👨‍💻  HackMachine (100Gems)",
     Default = false,
@@ -154,6 +163,9 @@ local TeleportTab = Window:MakeTab({
     Icon = "rbxassetid://6723742952",
     PremiumOnly = false
 })
+
+TeleportTab:AddLabel("🌀Telportations🌀")
+
 
 TeleportTab:AddButton({
     Name = "Teleport To Area",
@@ -281,9 +293,12 @@ TeleportTab:AddButton({
 
 local DungeonTab = Window:MakeTab({
     Name = "Dungeon",
-    Icon = "rbxassetid://4786777810",
+    Icon = "rbxassetid://890896676",
     PremiumOnly = false
 })
+
+DungeonTab:AddLabel("🗡️Dungeons🗡️")
+
 
 DungeonTab:AddButton({
     Name = "Start Dungeon",
@@ -309,6 +324,8 @@ local MachinesTab = Window:MakeTab({
     Icon = "rbxassetid://5078617183",
     PremiumOnly = false
 })
+
+MachinesTab:AddLabel("🛠️Tp To Machines🛠️")
 
 MachinesTab:AddButton({
     Name = "🧈 Gold Machine",
@@ -388,6 +405,8 @@ local FpsTab = Window:MakeTab({
     PremiumOnly = false
 })
 
+FpsTab:AddLabel("🟢FPS Stuff🟢")
+
 FpsTab:AddButton({
     Name = "Low Graphics",
     Default = false,
@@ -409,6 +428,15 @@ FpsTab:AddTextbox({
     end	  
 })
 
+local CreditsTab = Window:MakeTab({
+    Name = "Credits",
+    Icon = "rbxassetid://11896700808",
+    PremiumOnly = false
+})
+
+CreditsTab:AddLabel("Created By MasterGamerCat and RubyHubOfficial.")
+
+CreditsTab:AddLabel("Join The Discord : ")
 
 -- Sliders
 MiscTab:AddSlider({
