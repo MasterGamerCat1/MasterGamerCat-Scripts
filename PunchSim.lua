@@ -60,14 +60,6 @@ local MiscTab = Window:MakeTab({
 })
 
 MiscTab:AddButton({
-    Name = "FPS Boost (Low Graphics)",
-    Default = false,
-    Callback = function(Value)
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/MasterGamerCat1/MasterGamerCat-Scripts/main/LowGraphics.lua"))()
-    end
-})
-
-MiscTab:AddButton({
     Name = "Anti AFK",
     Default = false,
     Callback = function(Value)
@@ -389,6 +381,34 @@ MachinesTab:AddButton({
         rootPart.CFrame = CFrame.new(-9413.26465, 94.4916687, 2517.36768, 0, 0, -1, 0, 1, 0, 1, 0, 0)
     end
 })
+
+local FpsTab = Window:MakeTab({
+    Name = "FPS Booster",
+    Icon = "rbxassetid://5078617183",
+    PremiumOnly = false
+})
+
+FpsTab:AddButton({
+    Name = "Low Graphics",
+    Default = false,
+    Callback = function(Value)
+
+     loadstring(game:HttpGet("https://raw.githubusercontent.com/MasterGamerCat1/MasterGamerCat-Scripts/main/LowGraphics.lua"))()
+
+    end
+})
+
+
+FpsTab:AddTextbox({
+	Name = "FPS Unlocker",
+	Default = "default box input",
+	TextDisappear = true,
+	Callback = function(Value)
+        setfpscap(Value)
+
+    end	  
+})
+
 
 -- Sliders
 MiscTab:AddSlider({
