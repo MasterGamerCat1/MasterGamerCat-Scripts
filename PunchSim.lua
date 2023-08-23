@@ -384,7 +384,7 @@ MachinesTab:AddButton({
 
 local FpsTab = Window:MakeTab({
     Name = "FPS Booster",
-    Icon = "rbxassetid://5078617183",
+    Icon = "rbxassetid://590553552",
     PremiumOnly = false
 })
 
