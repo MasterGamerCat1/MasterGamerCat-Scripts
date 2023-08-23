@@ -1,10 +1,10 @@
 local OrionLib = loadstring(game:HttpGet(('https://pastebin.com/raw/TmwenJBZ')))()
 local Window = OrionLib:MakeWindow({
-    Name = "Munch Eating Simulator",
+    Name = "SEX SIMULATOR",
     HidePremium = false,
-    IntroText = "Munch Eating Simulator",
+    IntroText = "SEX SIMULATOR",
     SaveConfig = true,
-    ConfigFolder = "Munch Eating Simulator"
+    ConfigFolder = "SEX SIMULATOR"
 })
 
 -- Values
@@ -342,7 +342,7 @@ EggsTab:AddDropdown({
 
 -- Notifications
 OrionLib:MakeNotification({
-    Name = "Munch Eating Simulator",
+    Name = "SEX SIMULATOR",
     Content = "Successfully loaded in!",
     Image = "rbxassetid://14515446164",
     Time = 5
