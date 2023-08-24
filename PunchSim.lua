@@ -158,7 +158,7 @@ MiscTab:AddLabel("💠Miscs💠")
 
 
 MiscTab:AddToggle({
-    Name = "🎁  FreeGifts",
+    Name = "🎁 Auto Claim Free Gifts",
     Default = false,
     Callback = function(Value)
             getgenv().AutoPlaytime = Value
