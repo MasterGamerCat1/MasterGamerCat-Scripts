@@ -43,27 +43,28 @@ function KillAura()
         local Players = game:GetService("Players")
         local Workspace = game:GetService("Workspace")
         local ReplicatedStorage = game:GetService("ReplicatedStorage")
-    
+
         local offset = Vector3.new(0, 10, 0) -- Adjust the offset as needed
-    
+
         local function teleportToPosition(position)
             local player = Players.LocalPlayer
             local character = player.Character
             local humanoidRootPart = character and character:FindFirstChild("HumanoidRootPart")
-    
+
             if humanoidRootPart then
                 humanoidRootPart.CFrame = CFrame.new(position)
+                humanoidRootPart.Velocity = Vector3.new(0, 0, 0) -- Set velocity to zero
                 task.wait(0.1) -- Adjust the delay as needed
             end
         end
-    
+
         local function punchEnemy(enemyPart)
             ReplicatedStorage.Events.PunchEvent:FireServer(enemyPart)
         end
-    
+
         local dungeon = Workspace.BreakableParts.Dungeon
         local knownEnemies = {}
-    
+
         while getgenv().KillAura do
             -- Detect and attack new enemies
             for _, enemyModel in ipairs(dungeon:GetDescendants()) do
@@ -81,7 +82,7 @@ function KillAura()
                     end
                 end
             end
-    
+
             -- Teleport to known enemies
             for enemyName in pairs(knownEnemies) do
                 local enemyModel = dungeon:FindFirstChild(enemyName)
@@ -95,7 +96,7 @@ function KillAura()
                     end
                 end
             end
-    
+
             task.wait() -- Use task.wait() instead of wait() for better performance
         end
     end
