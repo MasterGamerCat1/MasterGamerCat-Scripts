@@ -38,6 +38,69 @@ function AutoHatchEgg()
     end
 end
 
+function KillAura()
+    if getgenv().KillAura then
+        local Players = game:GetService("Players")
+        local Workspace = game:GetService("Workspace")
+        local ReplicatedStorage = game:GetService("ReplicatedStorage")
+    
+        local offset = Vector3.new(0, 10, 0) -- Adjust the offset as needed
+    
+        local function teleportToPosition(position)
+            local player = Players.LocalPlayer
+            local character = player.Character
+            local humanoidRootPart = character and character:FindFirstChild("HumanoidRootPart")
+    
+            if humanoidRootPart then
+                humanoidRootPart.CFrame = CFrame.new(position)
+                task.wait(0.1) -- Adjust the delay as needed
+            end
+        end
+    
+        local function punchEnemy(enemyPart)
+            ReplicatedStorage.Events.PunchEvent:FireServer(enemyPart)
+        end
+    
+        local dungeon = Workspace.BreakableParts.Dungeon
+        local knownEnemies = {}
+    
+        while getgenv().KillAura do
+            -- Detect and attack new enemies
+            for _, enemyModel in ipairs(dungeon:GetDescendants()) do
+                if enemyModel:IsA("Model") and enemyModel:FindFirstChild("Humanoid") then
+                    local enemyName = enemyModel.Name
+                    if not knownEnemies[enemyName] then
+                        knownEnemies[enemyName] = true
+                        local enemyPrimaryPart = enemyModel.PrimaryPart
+                        if enemyPrimaryPart then
+                            local position = enemyPrimaryPart.Position + offset
+                            teleportToPosition(position)
+                            wait(0.1) -- Wait for teleportation to complete before attacking
+                            punchEnemy(enemyModel)
+                        end
+                    end
+                end
+            end
+    
+            -- Teleport to known enemies
+            for enemyName in pairs(knownEnemies) do
+                local enemyModel = dungeon:FindFirstChild(enemyName)
+                if enemyModel and enemyModel:IsA("Model") and enemyModel:FindFirstChild("Humanoid") then
+                    local enemyPrimaryPart = enemyModel.PrimaryPart
+                    if enemyPrimaryPart then
+                        local position = enemyPrimaryPart.Position + offset
+                        teleportToPosition(position)
+                        wait(0.1) -- Wait for teleportation to complete before attacking
+                        punchEnemy(enemyModel)
+                    end
+                end
+            end
+    
+            task.wait() -- Use task.wait() instead of wait() for better performance
+        end
+    end
+end
+
 -- Tabs
 local FarmingTab = Window:MakeTab({
     Name = "Auto Farm",
@@ -71,33 +134,21 @@ MiscTab:AddButton({
     Callback = function(Value)
         local VirtualUser = game:GetService("VirtualUser")
         local PlayerConnections = getconnections or get_signal_cons
-        
-            if PlayerConnections then
-                
-                for _, Connection in pairs(PlayerConnections(game.Players.LocalPlayer.Idled)) do
-                    
-                    if Connection["Disable"] then
-                        
-                        Connection["Disable"](Connection)
-                    
-                    elseif Connection["Disconnect"] then
-        
-                        Connection["Disconnect"](Connection)
-        
-                    end
-        
+
+        if PlayerConnections then
+            for _, Connection in pairs(PlayerConnections(game.Players.LocalPlayer.Idled)) do
+                if Connection["Disable"] then
+                    Connection["Disable"](Connection)
+                elseif Connection["Disconnect"] then
+                    Connection["Disconnect"](Connection)
                 end
-            
-            else
-        
-                game.Players.LocalPlayer.Idled:Connect(function()
-                    
-                    VirtualUser:CaptureController()
-                    VirtualUser:ClickButton2(Vector2.new())
-        
-                end)
-        
             end
+        else
+            game.Players.LocalPlayer.Idled:Connect(function()
+                VirtualUser:CaptureController()
+                VirtualUser:ClickButton2(Vector2.new())
+            end)
+        end
     end
 })
 
@@ -139,7 +190,7 @@ MiscTab:AddButton({
     Callback = function(Value)
         game:GetService("ReplicatedStorage").Events.WishingWell:FireServer("Small")
     end
-    })
+})
 
 MiscTab:AddButton({
     Name = "⭐  Wishing Well Medium (200Gems)",
@@ -147,7 +198,7 @@ MiscTab:AddButton({
     Callback = function(Value)
         game:GetService("ReplicatedStorage").Events.WishingWell:FireServer("Medium")
     end
-    })
+})
 
 MiscTab:AddButton({
     Name = "⭐  Wishing Well High (1000Gems)",
@@ -175,22 +226,23 @@ TeleportTab:AddButton({
     Default = false,
     Callback = function()
         local offset = Vector3.new(0, 7, 0)
-        local selectedTeleport = game:GetService("ReplicatedStorage").TeleportLocations:FindFirstChild(getgenv().SelectTeleport)
+        local selectedTeleport = game:GetService("ReplicatedStorage").TeleportLocations:FindFirstChild(getgenv()
+        .SelectTeleport)
         if selectedTeleport then
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = selectedTeleport.CFrame + offset
         end
     end
 })
 
-local teleport          = game:GetService("ReplicatedStorage").TeleportLocations:GetChildren() -- get all eggs in the workspace
-local teleportOptionsSet = {}                                           -- start with the default option
+local teleport           = game:GetService("ReplicatedStorage").TeleportLocations:GetChildren() -- get all eggs in the workspace
+local teleportOptionsSet = {}                                                                  -- start with the default option
 
 -- loop through each egg and add its name to the options list
 for i = 1, #teleport do
     local teleportName = teleport[i].Name
-    local numericPart = teleportName:match("%d+")            -- extract the numeric part from the egg name
+    local numericPart = teleportName:match("%d+")        -- extract the numeric part from the egg name
     if numericPart then
-        teleportOptionsSet[tonumber(numericPart)] = true     -- insert the numeric part as a key in the set
+        teleportOptionsSet[tonumber(numericPart)] = true -- insert the numeric part as a key in the set
     end
 end
 
@@ -218,80 +270,80 @@ TeleportTab:AddButton({
     Name = "🌲  Forest",
     Default = false,
     Callback = function(Value)
-        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 1,}))
-    end   
+        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({ [1] = "Teleport", [2] = 1, }))
+    end
 })
 
 TeleportTab:AddButton({
     Name = "🏜️  Desert",
     Default = false,
     Callback = function(Value)
-        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 2,}))
-    end   
+        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({ [1] = "Teleport", [2] = 2, }))
+    end
 })
 
 TeleportTab:AddButton({
     Name = "🕳️  Cave",
     Default = false,
     Callback = function(Value)
-        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 3,}))
-    end   
+        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({ [1] = "Teleport", [2] = 3, }))
+    end
 })
 
 TeleportTab:AddButton({
     Name = "🌊  Ocean",
     Default = false,
     Callback = function(Value)
-        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 4,}))
-    end   
+        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({ [1] = "Teleport", [2] = 4, }))
+    end
 })
 
 TeleportTab:AddButton({
     Name = "🍬  Candy",
     Default = false,
     Callback = function(Value)
-        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 5,}))
-    end   
+        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({ [1] = "Teleport", [2] = 5, }))
+    end
 })
 
 TeleportTab:AddButton({
     Name = "❄️  Snow",
     Default = false,
     Callback = function(Value)
-        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 6,}))
-    end   
+        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({ [1] = "Teleport", [2] = 6, }))
+    end
 })
 
 TeleportTab:AddButton({
     Name = "🧸  Toy",
     Default = false,
     Callback = function(Value)
-        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 7,}))
-    end   
+        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({ [1] = "Teleport", [2] = 7, }))
+    end
 })
 
 TeleportTab:AddButton({
     Name = "🚜  Farm",
     Default = false,
     Callback = function(Value)
-        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 8,}))
-    end   
+        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({ [1] = "Teleport", [2] = 8, }))
+    end
 })
 
 TeleportTab:AddButton({
     Name = "🏯  Samurai",
     Default = false,
     Callback = function(Value)
-        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 9,}))
-    end   
+        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({ [1] = "Teleport", [2] = 9, }))
+    end
 })
 
 TeleportTab:AddButton({
     Name = "🚀  Space",
     Default = false,
     Callback = function(Value)
-        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({    [1] = "Teleport",    [2] = 10,}))
-    end   
+        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({ [1] = "Teleport", [2] = 10, }))
+    end
 })
 
 local DungeonTab = Window:MakeTab({
@@ -307,18 +359,16 @@ DungeonTab:AddButton({
     Name = "Start Dungeon",
     Default = false,
     Callback = function(Value)
-        
-game:GetService("ReplicatedStorage").Events.DungeonEvent:FireServer("StartDungeon")
-
+        game:GetService("ReplicatedStorage").Events.DungeonEvent:FireServer("StartDungeon")
     end
 })
 
-DungeonTab:AddButton({
-    Name = "Auto Kill Dungeon (Soon)",
+DungeonTab:AddToggle({
+    Name = "Kill Aura",
     Default = false,
     Callback = function(Value)
-
-
+        getgenv().KillAura = Value
+        KillAura()
     end
 })
 
@@ -335,7 +385,8 @@ MachinesTab:AddButton({
     Default = false,
     Callback = function(Value)
         local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
-        rootPart.CFrame = CFrame.new(-1389.04065, 94.3862305, 2417.73462, -0.906296611, 0, 0.422642082, 0, 1, 0, -0.422642082, 0, -0.906296611)
+        rootPart.CFrame = CFrame.new(-1389.04065, 94.3862305, 2417.73462, -0.906296611, 0, 0.422642082, 0, 1, 0,
+            -0.422642082, 0, -0.906296611)
     end
 })
 
@@ -344,7 +395,8 @@ MachinesTab:AddButton({
     Default = false,
     Callback = function(Value)
         local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
-        rootPart.CFrame = CFrame.new(-1324.5791, 97.6729889, 2378.8584, -0.874622703, 0, 0.484804183, 0, 1, 0, -0.484804183, 0, -0.874622703)
+        rootPart.CFrame = CFrame.new(-1324.5791, 97.6729889, 2378.8584, -0.874622703, 0, 0.484804183, 0, 1, 0,
+            -0.484804183, 0, -0.874622703)
     end
 })
 
@@ -353,7 +405,8 @@ MachinesTab:AddButton({
     Default = false,
     Callback = function(Value)
         local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
-        rootPart.CFrame = CFrame.new(-3040.43677, 94.3603821, 2517.44922, -0.994581103, 0, -0.103963219, 0, 1, 0, 0.103963219, 0, -0.994581103)
+        rootPart.CFrame = CFrame.new(-3040.43677, 94.3603821, 2517.44922, -0.994581103, 0, -0.103963219, 0, 1, 0,
+            0.103963219, 0, -0.994581103)
     end
 })
 
@@ -362,7 +415,8 @@ MachinesTab:AddButton({
     Default = false,
     Callback = function(Value)
         local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
-        rootPart.CFrame = CFrame.new(-2932.83838, 94.4048767, 2511.0791, 0.90629667, 0, 0.422642082, 0, 1, 0, -0.422642082, 0, 0.90629667)
+        rootPart.CFrame = CFrame.new(-2932.83838, 94.4048767, 2511.0791, 0.90629667, 0, 0.422642082, 0, 1, 0,
+            -0.422642082, 0, 0.90629667)
     end
 })
 
@@ -380,7 +434,8 @@ MachinesTab:AddButton({
     Default = false,
     Callback = function(Value)
         local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
-        rootPart.CFrame = CFrame.new(-6149.37598, 94.2394028, 2517.45264, 0.422592998, 0, 0.906319618, 0, 1, 0, -0.906319618, 0, 0.422592998)
+        rootPart.CFrame = CFrame.new(-6149.37598, 94.2394028, 2517.45264, 0.422592998, 0, 0.906319618, 0, 1, 0,
+            -0.906319618, 0, 0.422592998)
     end
 })
 
@@ -389,7 +444,8 @@ MachinesTab:AddButton({
     Default = false,
     Callback = function(Value)
         local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
-        rootPart.CFrame = CFrame.new(-7548.10938, 94.1301727, 2528.77954, -0.798616767, 0, 0.601840496, 0, 1, 0, -0.601840496, 0, -0.798616767)
+        rootPart.CFrame = CFrame.new(-7548.10938, 94.1301727, 2528.77954, -0.798616767, 0, 0.601840496, 0, 1, 0,
+            -0.601840496, 0, -0.798616767)
     end
 })
 
@@ -414,21 +470,19 @@ FpsTab:AddButton({
     Name = "Low Graphics",
     Default = false,
     Callback = function(Value)
-
-     loadstring(game:HttpGet("https://raw.githubusercontent.com/MasterGamerCat1/MasterGamerCat-Scripts/main/LowGraphics.lua"))()
-
+        loadstring(game:HttpGet(
+        "https://raw.githubusercontent.com/MasterGamerCat1/MasterGamerCat-Scripts/main/LowGraphics.lua"))()
     end
 })
 
 
 FpsTab:AddTextbox({
-	Name = "FPS Unlocker",
-	Default = "Input",
-	TextDisappear = true,
-	Callback = function(Value)
+    Name = "FPS Unlocker",
+    Default = "Input",
+    TextDisappear = true,
+    Callback = function(Value)
         setfpscap(Value)
-
-    end	  
+    end
 })
 
 local CreditsTab = Window:MakeTab({
@@ -445,7 +499,7 @@ CreditsTab:AddButton({
     Name = "MasterGamerCat Discord Server",
     Default = false,
     Callback = function(Value)
-setclipboard("https://discord.gg/rx6Jg6yTyz")
+        setclipboard("https://discord.gg/rx6Jg6yTyz")
     end
 })
 
@@ -453,9 +507,7 @@ CreditsTab:AddButton({
     Name = "RubyHubOfficial Discord Server",
     Default = false,
     Callback = function(Value)
-
-setclipboard("https://discord.com/invite/9Nqz8QCyDf")
-
+        setclipboard("https://discord.com/invite/9Nqz8QCyDf")
     end
 })
 
@@ -468,8 +520,8 @@ MiscTab:AddSlider({
     Increment = 1,
     ValueName = "WalkSpeed",
     Callback = function(Value)
-     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
-    end    
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+    end
 })
 
 MiscTab:AddSlider({
@@ -480,8 +532,8 @@ MiscTab:AddSlider({
     Increment = 1,
     ValueName = "JumpPower",
     Callback = function(Value)
-  game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
-    end    
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+    end
 })
 -- Toggles
 
@@ -517,14 +569,14 @@ EggsTab:AddToggle({
 })
 
 local eggs          = game:GetService("Workspace").EggVendors:GetChildren() -- get all eggs in the workspace
-local eggOptionsSet = {}                                           -- start with the default option
+local eggOptionsSet = {}                                                    -- start with the default option
 
 -- loop through each egg and add its name to the options list
 for i = 1, #eggs do
     local eggName = eggs[i].Name
-    local numericPart = eggName:match("%d+")            -- extract the numeric part from the egg name
+    local numericPart = eggName:match("%d+")        -- extract the numeric part from the egg name
     if numericPart then
-        eggOptionsSet[tonumber(numericPart)] = true     -- insert the numeric part as a key in the set
+        eggOptionsSet[tonumber(numericPart)] = true -- insert the numeric part as a key in the set
     end
 end
 
