@@ -1,10 +1,10 @@
 local OrionLib = loadstring(game:HttpGet(('https://pastebin.com/raw/TmwenJBZ')))()
 local Window = OrionLib:MakeWindow({
-    Name = "Chester Hub",
+    Name = "MasterGamerCat Hub",
     HidePremium = false,
-    IntroText = "Chester Hub",
+    IntroText = "MasterGamerCat Hub",
     SaveConfig = true,
-    ConfigFolder = "Chester Hub"
+    ConfigFolder = "MasterGamerCat Hub"
 })
 
 -- Values
@@ -437,7 +437,7 @@ local CreditsTab = Window:MakeTab({
     PremiumOnly = false
 })
 
-CreditsTab:AddLabel("Created By MasterGamerCat and RubyHubOfficial.")
+CreditsTab:AddLabel("Created By MasterGamerCat, RubyHubOfficial and GodGamer.")
 
 CreditsTab:AddLabel("Join The Discord")
 
@@ -445,7 +445,7 @@ CreditsTab:AddButton({
     Name = "MasterGamerCat Discord Server",
     Default = false,
     Callback = function(Value)
-
+setclipboard("https://discord.gg/rx6Jg6yTyz")
     end
 })
 
@@ -453,6 +453,8 @@ CreditsTab:AddButton({
     Name = "RubyHubOfficial Discord Server",
     Default = false,
     Callback = function(Value)
+
+setclipboard("https://discord.com/invite/9Nqz8QCyDf")
 
     end
 })
@@ -547,9 +549,9 @@ EggsTab:AddDropdown({
 
 -- Notifications
 OrionLib:MakeNotification({
-    Name = "Chester Hub",
+    Name = "MasterGamerCat Hub",
     Content = "Successfully loaded in!",
-    Image = "rbxassetid://14515446164",
+    Image = "rbxassetid://5281294369",
     Time = 5
 })
 OrionLib:Init()
