@@ -18,7 +18,33 @@ getgenv().Teleport = false
 getgenv().SelectTeleport = ""
 -- Local Functions
 
--- Functions
+-- Functions|
+
+task.spawn(function()
+
+    while task.wait(1) do
+        
+        if getgenv().AutoPlaytime == true then
+
+            game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(1)
+            game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(2)
+            game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(3)
+            game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(4)
+            game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(5)
+            game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(6)
+            game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(7)
+            game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(8)
+            game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(9)
+            game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(10)
+            game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(11)
+            game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(12)
+
+        end
+
+    end
+
+end)
+
 -- Buttons
 
 -- Farming
@@ -29,6 +55,8 @@ function AutoDamage()
         task.wait()
     end
 end
+
+
 
 -- Eggs
 function AutoHatchEgg()
@@ -129,6 +157,16 @@ local MiscTab = Window:MakeTab({
 MiscTab:AddLabel("💠Miscs💠")
 
 
+MiscTab:AddToggle({
+    Name = "🎁  FreeGifts",
+    Default = false,
+    Callback = function(Value)
+            getgenv().AutoPlaytime = Value
+
+    end
+})
+
+
 MiscTab:AddButton({
     Name = "Anti AFK",
     Default = false,
@@ -153,26 +191,7 @@ MiscTab:AddButton({
     end
 })
 
-MiscTab:AddToggle({
-    Name = "🎁  FreeGifts",
-    Default = false,
-    Callback = function(Value)
-        getgenv().AutoPlaytime = Value
 
-        game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(1)
-        game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(2)
-        game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(3)
-        game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(4)
-        game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(5)
-        game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(6)
-        game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(7)
-        game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(8)
-        game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(9)
-        game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(10)
-        game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(11)
-        game:GetService("ReplicatedStorage").Events.PlaytimeRewardUpdateEvent:FireServer(12)
-    end
-})
 
 MiscTab:AddLabel("⚙️Activate Machines (Not auto)⚙️")
 
@@ -479,7 +498,7 @@ FpsTab:AddButton({
 
 FpsTab:AddTextbox({
     Name = "FPS Unlocker",
-    Default = "Input",
+    Default = "",
     TextDisappear = true,
     Callback = function(Value)
         setfpscap(Value)
