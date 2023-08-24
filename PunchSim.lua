@@ -205,7 +205,7 @@ MiscTab:AddButton({
     Name = "⭐  Wishing Well High (1000Gems)",
     Default = false,
     Callback = function(Value)
-        game:GetService("ReplicatedStorage").Events.WishingWell:FireServer("High")
+        game:GetService("ReplicatedStorage").Events.WishingWell:FireServer("Mega")
     end
 })
 
