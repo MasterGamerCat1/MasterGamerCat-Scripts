@@ -1,6 +1,6 @@
 local OrionLib = loadstring(game:HttpGet(('https://pastebin.com/raw/TmwenJBZ')))()
 local Window = OrionLib:MakeWindow({
-    Name = "SEX SIMULATOR (Beta) (Full Version Out)",
+    Name = "SEX SIMULATOR (Beta)(Beta Shutting Down Soon)",
     HidePremium = false,
     IntroText = "SEX SIMULATOR",
     SaveConfig = true,
