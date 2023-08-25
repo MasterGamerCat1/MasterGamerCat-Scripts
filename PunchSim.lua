@@ -615,36 +615,39 @@ EggsTab:AddToggle({
     end
 })
 
-local eggs          = game:GetService("Workspace").EggVendors:GetChildren() -- get all eggs in the workspace
-local eggOptionsSet = {}                                                    -- start with the default option
+local eggs = game:GetService("Workspace").EggVendors:GetChildren() -- get all eggs in the workspace
+local eggOptionsSet = {} -- start with an empty set
 
 -- loop through each egg and add its name to the options list
 for i = 1, #eggs do
     local eggName = eggs[i].Name
-    local numericPart = eggName:match("%d+")        -- extract the numeric part from the egg name
-    if numericPart then
-        eggOptionsSet[tonumber(numericPart)] = true -- insert the numeric part as a key in the set
+    if not eggName:lower():match("robux") then
+        table.insert(eggOptionsSet, eggName)
     end
 end
 
--- Convert the set keys to a list
-local eggOptions = {}
-for numericValue, _ in pairs(eggOptionsSet) do
-    table.insert(eggOptions, numericValue)
-end
-
--- Sort the eggOptions list in ascending order
-table.sort(eggOptions)
-
+-- Sort the eggOptionsSet list in ascending order based on numeric part
+table.sort(eggOptionsSet, function(a, b)
+    local numericPartA = tonumber(a:match("%d+"))
+    local numericPartB = tonumber(b:match("%d+"))
+    if numericPartA and numericPartB then
+        return numericPartA < numericPartB
+    elseif numericPartA then
+        return true
+    else
+        return false
+    end
+end)
 
 EggsTab:AddDropdown({
     Name = "Select Egg",
     Default = "",
-    Options = eggOptions,
+    Options = eggOptionsSet,
     Callback = function(Value)
         getgenv().SelectEgg = Value
     end
 })
+
 
 -- Notifications
 OrionLib:MakeNotification({
