@@ -401,6 +401,15 @@ local MachinesTab = Window:MakeTab({
 MachinesTab:AddLabel("🛠️Tp To Machines🛠️")
 
 MachinesTab:AddButton({
+    Name = "⚒️ BlackSmith",
+    Default = false,
+    Callback = function(Value)
+        local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
+        rootPart.CFrame = CFrame.new(-2237.79199, 94.1895294, 2655.76025, 0.422592998, -0, -0.906319618, 0, 1, -0, 0.906319618, 0, 0.422592998)
+    end
+}
+
+MachinesTab:AddButton({
     Name = "🧈 Gold Machine",
     Default = false,
     Callback = function(Value)
@@ -421,7 +430,7 @@ MachinesTab:AddButton({
 })
 
 MachinesTab:AddButton({
-    Name = "🐾 Merge Machine",
+    Name = "🔨 Merge Machine",
     Default = false,
     Callback = function(Value)
         local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
@@ -439,6 +448,15 @@ MachinesTab:AddButton({
             -0.422642082, 0, 0.90629667)
     end
 })
+
+MachinesTab:AddButton({
+    Name = "💪 PowerCore Machine",
+    Default = false,
+    Callback = function(Value)
+        local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
+        rootPart.CFrame = CFrame.new(-4142.54541, 94.433548, 2538.34155, 0.996191859, 0, 0.0871884301, 0, 1, 0, -0.0871884301, 0, 0.996191859)
+    end
+}
 
 MachinesTab:AddButton({
     Name = "★ Wishing Well",
