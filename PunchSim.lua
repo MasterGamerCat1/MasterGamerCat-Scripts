@@ -401,6 +401,15 @@ local MachinesTab = Window:MakeTab({
 MachinesTab:AddLabel("🛠️Tp To Machines🛠️")
 
 MachinesTab:AddButton({
+    Name = "📊 Leaderboards",
+    Default = false,
+    Callback = function(Value)
+        local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
+        rootPart.CFrame = CFrame.new(-1281.7832, 115.739449, 2418.50635, 0.207885921, -0, -0.97815311, 0, 1, -0, 0.97815311, 0, 0.207885921)
+    end
+}
+
+MachinesTab:AddButton({
     Name = "⚒️ BlackSmith",
     Default = false,
     Callback = function(Value)
