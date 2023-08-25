@@ -621,7 +621,7 @@ local eggOptionsSet = {} -- start with an empty set
 -- loop through each egg and add its name to the options list
 for i = 1, #eggs do
     local eggName = eggs[i].Name
-    if not eggName:lower():match("robux") then
+    if not eggName:lower():match("robux") and eggName:lower() ~= "forest2" and eggName:lower() ~= "mountain" and eggName:lower() ~= "wildwest" then
         table.insert(eggOptionsSet, eggName)
     end
 end
