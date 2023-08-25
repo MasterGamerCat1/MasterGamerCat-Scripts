@@ -34,7 +34,7 @@ end
 function AutoHatchEgg()
     while getgenv().AutoHatchEgg do
         game:GetService("ReplicatedStorage").Events.PlayerPressedKeyOnEgg:FireServer("" .. getgenv().SelectEgg .. "")
-        task.wait()
+        task.wait(1)
     end
 end
 
