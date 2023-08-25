@@ -1,6 +1,6 @@
 local OrionLib = loadstring(game:HttpGet(('https://pastebin.com/raw/TmwenJBZ')))()
 local Window = OrionLib:MakeWindow({
-    Name = "SEX SIMULATOR",
+    Name = "SEX SIMULATOR (Beta) (Full Version Out)",
     HidePremium = false,
     IntroText = "SEX SIMULATOR",
     SaveConfig = true,
@@ -26,7 +26,7 @@ getgenv().SelectTeleport = ""
 function AutoDamage()
     while getgenv().AutoDamage do
         game:GetService("ReplicatedStorage").Events.DamageIncreaseOnClickEvent:FireServer()
-        task.wait()
+        task.wait(1)
     end
 end
 
@@ -244,7 +244,7 @@ game:GetService("ReplicatedStorage").Events.DungeonEvent:FireServer("StartDungeo
 })
 
 DungeonTab:AddButton({
-    Name = "Auto Kill Dungeon (Soon)",
+    Name = "Auto Kill Dungeon (Get Full Version)",
     Default = false,
     Callback = function(Value)
 
