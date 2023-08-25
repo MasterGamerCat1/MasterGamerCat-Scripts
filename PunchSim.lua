@@ -407,7 +407,7 @@ MachinesTab:AddButton({
         local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
         rootPart.CFrame = CFrame.new(-1281.7832, 115.739449, 2418.50635, 0.207885921, -0, -0.97815311, 0, 1, -0, 0.97815311, 0, 0.207885921)
     end
-}
+})
 
 MachinesTab:AddButton({
     Name = "⚒️ BlackSmith",
@@ -416,7 +416,7 @@ MachinesTab:AddButton({
         local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
         rootPart.CFrame = CFrame.new(-2237.79199, 94.1895294, 2655.76025, 0.422592998, -0, -0.906319618, 0, 1, -0, 0.906319618, 0, 0.422592998)
     end
-}
+})
 
 MachinesTab:AddButton({
     Name = "🧈 Gold Machine",
@@ -465,7 +465,7 @@ MachinesTab:AddButton({
         local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
         rootPart.CFrame = CFrame.new(-4142.54541, 94.433548, 2538.34155, 0.996191859, 0, 0.0871884301, 0, 1, 0, -0.0871884301, 0, 0.996191859)
     end
-}
+})
 
 MachinesTab:AddButton({
     Name = "★ Wishing Well",
