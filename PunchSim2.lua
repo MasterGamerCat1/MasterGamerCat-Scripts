@@ -22,8 +22,7 @@ while task.wait(0.5) do
  
     pcall(function()
  
-game.Players.LocalPlayer:Kick("This Script Is No Longer Supported Join (gg/Gc63gEUsRQ)")
-
+game.Players.LocalPlayer:Kick("This Script Is No Longer Supported Join For New Version Of Script. Thanks For Using MasterGamerCat HUB (gg/Gc63gEUsRQ)")
  
     end)
  
