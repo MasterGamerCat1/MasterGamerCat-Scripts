@@ -22,7 +22,7 @@ while task.wait(0.5) do
  
     pcall(function()
  
-
+game.Players.LocalPlayer:Kick("This Script Is No Longer Supported Join (gg/Gc63gEUsRQ)")
  
     end)
  
