@@ -13,8 +13,6 @@ RubyHubFunctions.StartupAnimation({
     LoadingText = "Thank you for choosing Chester Hub!", -- default = "Loading..."
     Icon = "rbxassetid://14515446164" -- default = RubyHubFunctions.Icons.RubyHubNoBG
 })
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/MasterGamerCat1/MasterGamerCat-Scripts/main/PunchSim.lua"))()
  
 task.wait(3)
  
