@@ -1,6 +1,6 @@
 local OrionLib = loadstring(game:HttpGet(('https://pastebin.com/raw/TmwenJBZ')))()
 local Window = OrionLib:MakeWindow({
-    Name = "MasterGamerCat Hub (Version 1.10)",
+    Name = "MasterGamerCat Hub (Version 1.11)",
     HidePremium = false,
     IntroText = "MasterGamerCat Hub",
     SaveConfig = true,
@@ -365,6 +365,15 @@ TeleportTab:AddButton({
         game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({ [1] = "Teleport", [2] = 10, }))
     end
 })
+
+TeleportTab:AddButton({
+    Name = "✨  Magical Forest",
+    Default = false,
+    Callback = function(Value)
+        game:GetService("ReplicatedStorage").Events.TeleportEvent:InvokeServer(table.unpack({ [1] = "Teleport", [2] = 11, }))
+    end
+})
+
 
 local DungeonTab = Window:MakeTab({
     Name = "Dungeon",
