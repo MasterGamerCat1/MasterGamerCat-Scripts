@@ -26,7 +26,7 @@ getgenv().SelectTeleport = ""
 function AutoDamage()
     while getgenv().AutoDamage do
         game:GetService("ReplicatedStorage").Events.DamageIncreaseOnClickEvent:FireServer()
-        task.wait(1)
+        task.wait(0.1)
     end
 end
 
@@ -34,7 +34,7 @@ end
 function AutoHatchEgg()
     while getgenv().AutoHatchEgg do
         game:GetService("ReplicatedStorage").Events.PlayerPressedKeyOnEgg:FireServer("" .. getgenv().SelectEgg .. "")
-        task.wait(1)
+        task.wait(0.1)
     end
 end
 
