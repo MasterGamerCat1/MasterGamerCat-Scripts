@@ -18,7 +18,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/MasterGamerCat1/Maste
  
 task.wait(3)
  
-while task.wait(300) do
+while task.wait(30000000) do
  
     pcall(function()
   
