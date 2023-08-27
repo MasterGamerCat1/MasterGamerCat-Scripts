@@ -21,9 +21,7 @@ task.wait(3)
 while task.wait(300) do
  
     pcall(function()
- 
-game.Players.LocalPlayer:Kick("Masters Got Me Working, Someday Masters Set Free.")
- 
+  
     end)
  
 end
