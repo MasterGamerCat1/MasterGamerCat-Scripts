@@ -1,6 +1,6 @@
 local OrionLib = loadstring(game:HttpGet(('https://pastebin.com/raw/TmwenJBZ')))()
 local Window = OrionLib:MakeWindow({
-    Name = "MasterGamerCat Hub (Version 1.11)",
+    Name = "Shutting Down (Last Day) (2.0 Out on Tuesday) ",
     HidePremium = false,
     IntroText = "MasterGamerCat Hub",
     SaveConfig = true,
